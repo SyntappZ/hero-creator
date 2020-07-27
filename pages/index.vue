@@ -1,30 +1,37 @@
 <template>
   <div class="main container">
-  
-    <div class="welcome">
-      
+    <div class="setup-wrap">
+      <div class="selector-wrap">
+        <Selector />
+      </div>
+      <div class="sections-wrap">
+        <Sections />
+      </div>
     </div>
     <div class="code-wrap">
-      <div class="html-code">
-        <CssCodePrism :documentTitle="documentTitle" />
-        
-      </div>
-      <div class="css-code">
+      <div class="code">
         <HtmlCodePrism :documentTitle="documentTitle" />
+      </div>
+      <div class="code">
+        <CssCodePrism :documentTitle="documentTitle" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import PageTemplate from "../components/PageTemplate.vue";
+import CssCodePrism from "../components/CssCodePrism.vue";
 import HtmlCodePrism from "../components/HtmlCodePrism.vue";
+import Selector from "../components/Selector.vue";
+import Sections from "../components/Sections.vue";
 
 export default {
   name: "App",
   components: {
-    PageTemplate,
+    CssCodePrism,
     HtmlCodePrism,
+    Selector,
+    Sections,
   },
   data() {
     return {
@@ -35,17 +42,23 @@ export default {
 </script>
 
 <style scoped>
-
-.welcome {
+.setup-wrap {
   width: 100%;
-  height: 500px;
-  
+  padding: 70px 0;
+  display: flex;
 }
-.wrap {
+.code-wrap {
   width: 100%;
   display: flex;
   min-height: 100vh;
-  
 }
 
+.selector-wrap,
+.section-wrap {
+  width: 100%;
+}
+
+.code {
+  width: 100%;
+}
 </style>

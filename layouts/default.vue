@@ -20,12 +20,15 @@ export default {
 <style>
 
 :root {
-  --main-blue: #082b59;
-  --light-blue: #08428C;
+  --main: #5f1735;
+  --peach: #DBA7A2;
+  --light-main: #94395f;
+  --border-radius: 10px;
+  --box-shadow: 10px 10px 25px -19px #2f2f2f8f;
+  --linear-background: linear-gradient(0deg, var(--main), rgb(144, 24, 60));
 }
 body {
   font-family: 'Barlow', sans-serif;
- 
   font-size: 16px;
   box-sizing: border-box;
   background: #f6f6f6;
@@ -33,7 +36,7 @@ body {
 }
 
 .container {
-  padding: 0 150px;
+  padding: 0 250px;
 }
 
 

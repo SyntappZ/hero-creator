@@ -1,37 +1,31 @@
 <template>
-  <div class="html-template-code">
-  <prism language="html">{{pageTemplate}}</prism>
-  
+  <div class="html-code">
+    <prism language="html" class="code">{{htmlCode}}</prism>
   </div>
 </template>
 
 <script>
-import 'prismjs/prism'
-import 'prismjs/themes/prism-okaidia.css'
-import Prism from 'vue-prism-component'
+import "prismjs/prism";
+import "prismjs/themes/prism-okaidia.css";
+import Prism from "vue-prism-component";
 
 export default {
-  name: "template-code",
+  name: "html-code",
   components: {
     Prism,
-  
   },
-  props: ['documentTitle'],
-  mounted() {
-   
-    
-  },
+  props: ["documentTitle"],
+  mounted() {},
   data() {
     return {
-      code: 'p { color: red }',
-      title: 'whats up my nigga',
-      box: '',
-      css: ".jeff { color: red }"
-    
+      code: "p { color: red }",
+      title: "whats up my nigga",
+      box: `<div class="box"></box>`,
+      css: ".jeff { color: red }",
     };
   },
   computed: {
-    pageTemplate() {
+    htmlCode() {
       return `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -50,18 +44,15 @@ export default {
 
 
 <style scoped>
-.html-template-code {
+.html-code {
   width: 100%;
   height: 100vh;
-  padding: 10px 100px;
 }
 .code {
-  display: block;
-  width: 500px;
-  height: 200px;
-  background: #181818;
-  color: white;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
+  background: #1b1b1b;
+  margin-right: 10px;
+  min-height: 600px;
+  box-shadow: var(--box-shadow);
 }
-
 </style>
