@@ -5,7 +5,7 @@
         <Selector />
       </div>
       <div class="sections-wrap">
-        <Sections />
+        <SectionsContainer />
       </div>
     </div>
     <div class="code-wrap">
@@ -23,7 +23,7 @@
 import CssCodePrism from "../components/CssCodePrism.vue";
 import HtmlCodePrism from "../components/HtmlCodePrism.vue";
 import Selector from "../components/Selector.vue";
-import Sections from "../components/Sections.vue";
+import SectionsContainer from "../components/SectionsContainer.vue";
 
 export default {
   name: "App",
@@ -31,7 +31,7 @@ export default {
     CssCodePrism,
     HtmlCodePrism,
     Selector,
-    Sections,
+    SectionsContainer,
   },
   data() {
     return {
