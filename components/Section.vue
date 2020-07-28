@@ -9,19 +9,23 @@
         <p class="subtitle">{{ sectionAmout }} sections</p>
       </div>
     </div>
-    <div class="radio-wrap">
+    <div class="button-wrap" @click="changeSection(id)">
       <div :class="[circle, fill]"></div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   props: ["id", "title", "sectionAmout", "currentSection"],
   data() {
     return {
       circle: "circle",
     };
+  },
+  methods: {
+    ...mapActions("dataStore",["changeSection"]),
   },
   computed: {
     fill() {
@@ -65,12 +69,13 @@ export default {
   font-size: 14px;
   font-weight: 500;
 }
-.radio-wrap {
+.button-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
   height: 100%;
+  cursor: pointer;
 }
 
 .circle {

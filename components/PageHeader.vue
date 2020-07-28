@@ -4,10 +4,10 @@
       <img src="/images/landing-logo.png" class="logo" alt="logo" />
       <div class="title-wrap">
         <p class="nav-title">
-          landing
-          <span>pager</span>
+          portfolio
+          <span>creator</span>
         </p>
-        <p class="subtitle">code generator</p>
+        <p class="subtitle">template generator</p>
       </div>
     </div>
 

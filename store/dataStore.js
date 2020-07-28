@@ -59,16 +59,15 @@ const state = () => ({
 });
 
 const mutations = {
-  // updateType(state, payload) {
-  //     state.codeType = payload;
-  // }
+  updateSection(state, payload) {
+      state.currentSection = payload;
+  }
 };
 
 const actions = {
-  //   changeType({ commit }, payload) {
-  //       console.log(payload)
-  //     commit("updateType", payload);
-  //   }
+    changeSection({ commit }, payload) {
+      commit("updateSection", payload);
+    }
 };
 
 export { state, actions, mutations };
