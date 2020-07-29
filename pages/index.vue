@@ -1,23 +1,23 @@
 <template>
   <div class="main container">
     <h2 class="title">{{section.title}}</h2>
-    <p class="subtitle">{{section.sectionAmout}} sections</p>
+    <p class="subtitle">{{section.slideAmount}} Slides</p>
     <div class="setup-wrap">
       <div class="selector-wrap">
-        <Selector />
+        <SectionContainer />
       </div>
       <div class="sections-wrap">
-        <SectionsContainer />
+        <SectionChooser />
       </div>
     </div>
     <div class="code-wrap">
       <div class="code">
         <h2 class="code-title">{{codeType}}</h2>
-        <HtmlCodePrism :documentTitle="documentTitle" />
+        <HtmlCodePrism />
       </div>
       <div class="code">
         <h2 style="padding-left: 5px" class="code-title">{{codeType === 'vue' ? codeType : 'css'}}</h2>
-        <CssCodePrism :documentTitle="documentTitle" />
+        <CssCodePrism />
       </div>
     </div>
   </div>
@@ -26,20 +26,20 @@
 <script>
 import CssCodePrism from "../components/CssCodePrism.vue";
 import HtmlCodePrism from "../components/HtmlCodePrism.vue";
-import Selector from "../components/Selector.vue";
-import SectionsContainer from "../components/SectionsContainer.vue";
+import SectionContainer from "../components/SectionContainer.vue";
+import SectionChooser from "../components/SectionChooser.vue";
 import { mapState } from "vuex";
 export default {
   name: "App",
   components: {
     CssCodePrism,
     HtmlCodePrism,
-    Selector,
-    SectionsContainer,
+    SectionContainer,
+    SectionChooser,
   },
   data() {
     return {
-      documentTitle: "",
+     
     };
   },
   computed: {

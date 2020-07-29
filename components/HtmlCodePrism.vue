@@ -8,13 +8,13 @@
 import "prismjs/prism";
 import "prismjs/themes/prism-okaidia.css";
 import Prism from "vue-prism-component";
-
+import {mapState} from "vuex"
 export default {
   name: "html-code",
   components: {
     Prism,
   },
-  props: ["documentTitle"],
+  props: [],
   mounted() {},
   data() {
     return {
@@ -24,13 +24,18 @@ export default {
       css: ".jeff { color: red }",
     };
   },
+  
   computed: {
+     ...mapState("prismStore", ["keywords", "author", "description", "documentTitle"]),
     htmlCode() {
       return `<!DOCTYPE html>
   <html lang="en">
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="keywords" content="${this.keywords}">
+      <meta name="author" content="${this.author}">
+      <meta name="description" content="${this.description}">
       <title>${this.documentTitle}</title>
     </head>
     <body>

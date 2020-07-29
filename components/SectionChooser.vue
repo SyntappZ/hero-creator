@@ -1,25 +1,25 @@
 <template>
-  <div class="sections-container">
+  <div class="section-chooser">
     <div class="title-wrap">
       <h2>Sections</h2>
     </div>
-    <Section
+    <SectionButton
       v-for="section in sections"
       :key="section.id"
       :title="section.title"
       :id="section.id"
-      :sectionAmout="section.sectionAmout"
+      :slideAmount="section.slideAmount"
       :currentSection="currentSection"
     />
   </div>
 </template>
 
 <script>
-import Section from "./Section.vue";
+import SectionButton from "./SectionButton.vue";
 import { mapState } from "vuex";
 export default {
   components: {
-    Section,
+    SectionButton,
   },
   data() {
     return {};
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style scoped>
-.sections-container {
+.section-chooser {
   width: 400px;
   height: 520px;
   background: var(--linear-background);
