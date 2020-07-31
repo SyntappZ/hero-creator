@@ -1,7 +1,11 @@
 <template>
-  <div class="section-button" :style="{borderBottom: id === 6 ? 'none' : null}">
+  <div
+    class="section-button"
+    :style="{borderBottom: section === 6 ? 'none' : null}"
+    @click="changeSection(id)"
+  >
     <div class="number">
-      <h2>{{id}}</h2>
+      <h2>{{section}}</h2>
     </div>
     <div class="text">
       <div class="text-wrap">
@@ -9,7 +13,7 @@
         <p class="subtitle">{{ slideAmount }} slides</p>
       </div>
     </div>
-    <div class="button-wrap" @click="changeSection(id)">
+    <div class="button-wrap">
       <div :class="[circle, fill]"></div>
     </div>
   </div>
@@ -25,11 +29,14 @@ export default {
     };
   },
   methods: {
-    ...mapActions("dataStore",["changeSection"]),
+    ...mapActions("dataStore", ["changeSection"]),
   },
   computed: {
     fill() {
       return this.currentSection === this.id ? "fill" : "";
+    },
+    section() {
+      return this.id + 1;
     },
   },
 };
@@ -42,6 +49,8 @@ export default {
   align-items: center;
   justify-content: space-between;
   border-bottom: solid white 1px;
+
+  cursor: pointer;
 }
 
 .number {
@@ -75,7 +84,6 @@ export default {
   align-items: center;
   flex: 1;
   height: 100%;
-  cursor: pointer;
 }
 
 .circle {

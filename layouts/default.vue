@@ -34,6 +34,11 @@ body {
   overflow-y: scroll;
 }
 
+.h3-title {
+  text-transform: capitalize;
+  padding: 10px 0;
+}
+
 .container {
   padding: 0 250px;
 }

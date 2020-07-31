@@ -10,7 +10,7 @@ const mutations = {
 
 const actions = {
   changeType({ commit }, payload) {
-    console.log(payload);
+    
     commit("updateType", payload);
   }
 };

@@ -1,45 +1,50 @@
 <template>
   <div class="section-container">
     <div class="wrap">
-      <Section :slides="sections[this.sectionIndex].slides" :id="slideIndex" />
+      <Title :title="slideTitle" />
+      <Slides />
     </div>
     <div class="footer">
-      <button @click="changeSlide(false)">back</button>
-      <button @click="changeSlide(true)">next</button>
+      <button @click="pagination(slide > 0 ? --slide : 0)">back</button>
+      <button @click="pagination(slide < 24 ? ++slide : 24)">next</button>
     </div>
   </div>
 </template>
 
 <script>
-import Section from "./Section.vue";
-
-import { mapState } from "vuex";
+import Slides from "./Slides.vue";
+import Title from "./Title.vue";
+import { mapState, mapActions } from "vuex";
 export default {
-  mounted() {
-    
-  },
+  mounted() {},
   components: {
-    Section,
-   
+    Slides,
+    Title,
   },
   data() {
     return {
-     slideIndex: 0,
+      slide: 0,
     };
   },
   computed: {
-    ...mapState("dataStore", ["sections", "currentSection"]),
-    sectionIndex() {
-      return this.currentSection - 1
+    ...mapState("dataStore", [
+      "sections",
+      "slides",
+      "currentSection",
+      "currentSlide",
+    ]),
+    slideTitle() {
+      const title = this.sections[this.currentSection].title;
+      const slideTitle = this.slides[this.currentSlide].title;
+      const check = title === "setup" ? slideTitle : `${title} ${slideTitle}`;
+      return slideTitle;
     },
-   
-
   },
+
   methods: {
-    changeSlide(forward) {
-      if (forward) {
-        this.slideIndex++
-      }
+    ...mapActions("dataStore", ["changeSlide", "changeSection"]),
+    pagination(slide) {
+      this.changeSlide(slide);
     },
   },
 };
@@ -56,6 +61,7 @@ export default {
 }
 
 .wrap {
+ 
   padding: 20px 50px;
   min-height: 420px;
 }

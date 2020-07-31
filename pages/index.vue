@@ -46,7 +46,7 @@ export default {
     ...mapState("dataStore", ["sections", "currentSection"]),
     ...mapState(["codeType"]),
     section() {
-      return this.sections[this.currentSection - 1];
+      return this.sections[this.currentSection];
     },
   },
 };

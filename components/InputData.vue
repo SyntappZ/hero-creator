@@ -4,21 +4,31 @@
       class="input"
       type="text"
       :placeholder="placeholder"
-      :value="value" 
-      @input="$emit('input', $event.target.value)"
+      v-model="inputValue"
     />
   </div>
 </template>
 
 <script>
-
+import { mapActions } from 'vuex'
 export default {
-  props: ["storeTo", "placeholder"],
+  props: ["id", "placeholder"],
   data() {
     return {
-      inputData: "",
+      inputValue: "",
     };
   },
+  methods: {
+    ...mapActions("prismStore", ["updateInputData"]),
+  
+  },
+  watch: {
+    inputValue() {
+     
+      this.updateInputData({id: this.id, input: this.inputValue})
+    }
+  }
+
  
 };
 </script>

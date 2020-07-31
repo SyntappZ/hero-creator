@@ -13,7 +13,7 @@ export default {
 <style scoped>
 .title-wrap {
   width: 100%;
-  padding: 10px 0 40px 0;
+  padding: 10px 0 25px 0;
 }
 
 .title {
