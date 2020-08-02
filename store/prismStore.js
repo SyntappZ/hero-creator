@@ -19,10 +19,10 @@ const setStyleProperty = (style, payload) => {
   root.style.setProperty(style, payload);
 }
 
-const darkMode = (darkmode) => {
+const darkMode = (darkmode, primaryColor) => {
   if(darkmode) {
     setStyleProperty('--sectionBackground', '#333')
-    setStyleProperty('--headerBackground', '#222')
+    setStyleProperty('--headerBackground', primaryColor || '#222')
     setStyleProperty('--linkColor', 'white')
     setStyleProperty('--textColor', 'white')
   }else{
@@ -42,21 +42,26 @@ const mutations = {
     
     state[name] = !state[name];
     console.log(state.darkMode)
-    darkMode(state.darkMode)
+    darkMode(state.darkMode, state.mainPrimaryColor)
   
   },
   setColor(state, { name, color }) {
-    const root = document.documentElement
+  
     
     state[name] = color;
     const styleName = `--${name}`
-    console.log(root)
-    root.style.setProperty(styleName, color);
+    if(state.darkMode) {
+      setStyleProperty('--headerBackground', color)
+    }
+
+    setStyleProperty(styleName, color)
+
   },
   setFont(state, font) {
-    const root = document.documentElement
+
     state.mainFont = font;
-    root.style.setProperty('--templateFont', font);
+    setStyleProperty('--templateFont', font)
+    
   },
   setPreviewBody(state, payload) {
     

@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     changePrimaryColor({ hex }) {
-      const payload = { name: "linkColor", color: hex };
+      const payload = { name: "mainPrimaryColor", color: hex };
       this.updateColor(payload);
     },
     changeSecondaryColor({ hex }) {
@@ -49,6 +49,7 @@ export default {
   },
   computed: {
     ...mapState("dataStore", ["currentSection", "sections"]),
+    ...mapState("prismStore", ["darkMode"]),
   },
 };
 </script>
