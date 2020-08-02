@@ -1,5 +1,5 @@
 <template>
-  <div class="meta-data">
+  <div class="meta-data slidePosition">
 
     <InputData placeholder="Document Title" id="documentTitle" />
     <InputData placeholder="Description" id="description" />
@@ -40,6 +40,6 @@ export default {
 
 <style scoped>
 .meta-data {
- 
+ width: 100%;
 }
 </style>

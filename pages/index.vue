@@ -1,8 +1,12 @@
 <template>
-  <div class="main container">
-    <h2 class="title">{{section.title}}</h2>
+  <div class="main ">
+    <div class="container">
+       <h2 class="title">{{section.title}}</h2>
     <p class="subtitle">{{section.slideAmount}} Slides</p>
-    <div class="setup-wrap">
+    </div>
+
+   
+    <div class="setup-wrap container">
       <div class="selector-wrap">
         <SectionContainer />
       </div>
@@ -10,33 +14,26 @@
         <SectionChooser />
       </div>
     </div>
-    <div class="code-wrap">
-      <div class="code">
-        <h2 class="code-title">{{codeType}}</h2>
-        <HtmlCodePrism />
-      </div>
-      <div class="code">
-        <h2 style="padding-left: 5px" class="code-title">{{codeType === 'vue' ? codeType : 'css'}}</h2>
-        <CssCodePrism />
-      </div>
+    <div class="preview-wrap">
+    <PreviewTemplate />
     </div>
   </div>
 </template>
 
 <script>
-import CssCodePrism from "../components/CssCodePrism.vue";
-import HtmlCodePrism from "../components/HtmlCodePrism.vue";
+
 import SectionContainer from "../components/SectionContainer.vue";
 import SectionChooser from "../components/SectionChooser.vue";
+import PreviewTemplate from '../components/PreviewTemplate.vue'
 import { mapState } from "vuex";
 export default {
   name: "App",
   components: {
-    CssCodePrism,
-    HtmlCodePrism,
     SectionContainer,
     SectionChooser,
+    PreviewTemplate
   },
+ 
   data() {
     return {
      
@@ -44,7 +41,7 @@ export default {
   },
   computed: {
     ...mapState("dataStore", ["sections", "currentSection"]),
-    ...mapState(["codeType"]),
+   
     section() {
       return this.sections[this.currentSection];
     },
@@ -56,6 +53,8 @@ export default {
 .setup-wrap {
   width: 100%;
   display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
 }
 
 .title {
@@ -65,30 +64,30 @@ export default {
   font-size: 27px;
 }
 
-.code-title {
-  padding: 70px 0 0 0;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-size: 18px;
-}
+
 .subtitle {
   padding-bottom: 20px;
   color: #a5a5a5;
   font-weight: 500;
   text-transform: capitalize;
 }
-.code-wrap {
-  width: 100%;
-  display: flex;
-  min-height: 100vh;
-}
 
-.selector-wrap,
+
 .section-wrap {
-  width: 100%;
+  flex-grow: 1;
+ 
 }
 
-.code {
-  width: 100%;
+.selector-wrap {
+  flex-grow: 1;
+  
+ 
 }
+
+.preview-wrap {
+  padding: 50px 0;
+  margin: 50px 30px;
+}
+
+
 </style>

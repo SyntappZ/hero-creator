@@ -1,5 +1,5 @@
 <template>
-  <div class="buttons"></div>
+  <div class="buttons slidePosition"></div>
 </template>
 
 <script>
@@ -8,6 +8,6 @@ export default {};
 
 <style scoped>
 .buttons {
- 
+ width: 100%;
 }
 </style>

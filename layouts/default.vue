@@ -1,19 +1,33 @@
 <template>
   <div>
     <Header />
-    <PreviewLinks />
+    <CodeLinks />
     <Nuxt />
   </div>
 </template>
 
 <script>
 import Header from "../components/PageHeader.vue";
-import PreviewLinks from "../components/PreviewLinks.vue";
+import CodeLinks from "../components/CodeLinks.vue";
+import {mapActions, mapState} from 'vuex'
 export default {
   components: {
     Header,
-    PreviewLinks,
+    CodeLinks,
   },
+  mounted() {
+    const root = document.documentElement
+    
+  },
+  methods: {
+    // ...mapActions('prismStore', ['updateRoot'])
+  },
+  computed: {
+    // ...mapState('prismStore', ['darkMode']),
+
+  },
+  
+  
 };
 </script>
 
@@ -25,6 +39,15 @@ export default {
   --border-radius: 10px;
   --box-shadow: 10px 10px 25px -19px #2f2f2f8f;
   --linear-background: linear-gradient(0deg, var(--main), rgb(144, 24, 60));
+
+  /* template variables */
+  --linkColor: #333;
+  --sectionBackground: white; 
+  --textColor: #333;
+  --headerBackground: white;
+  --fontWeight: bold;
+  --headerTextTransform: capitalize;
+  --templateFont: Arial;
 }
 body {
   font-family: "Nunito", sans-serif;
@@ -39,8 +62,15 @@ body {
   padding: 10px 0;
 }
 
+.slidePosition {
+  position: absolute;
+}
+
 .container {
-  padding: 0 250px;
+  width: 100%;
+  max-width: 1460px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
 *,

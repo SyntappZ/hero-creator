@@ -1,27 +1,28 @@
 <template>
-  <div class="preview-links container">
-    <h3>{{codeType}} code</h3>
-    <div class="link-wrap">
-      <nuxt-link :class="[link, onPreview ? linkUnderline : '']" to="/">Builder</nuxt-link>
-      <nuxt-link :class="[link, onPreview ? '' : linkUnderline]" to="/preview">Preview</nuxt-link>
+  <div class="code-links">
+    <div class="container">
+      <h3>{{codeType}} code</h3>
+      <div class="link-wrap">
+        <nuxt-link :class="[link, onCode ? linkUnderline : '']" to="/">Builder</nuxt-link>
+        <nuxt-link :class="[link, onCode ? '' : linkUnderline]" to="/code">Code</nuxt-link>
+      </div>
+      <h3></h3>
     </div>
-    <h3></h3>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       linkUnderline: "onLink",
       link: "link",
-      
     };
   },
   computed: {
     ...mapState(["codeType"]),
-    onPreview() {
+    onCode() {
       const page = this.$route.path;
       return page === "/";
     },
@@ -30,14 +31,17 @@ export default {
 </script>
 
 <style scoped>
-.preview-links {
+.code-links {
   width: 100%;
-  display: flex;
-  background: #f5f5f5;
+  background: #f1f1f1;
   border-bottom: solid 1px #e6e6e6;
-  justify-content: space-between;
   color: rgb(100, 100, 100);
   position: relative;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -46,7 +50,6 @@ h3 {
   text-transform: capitalize;
   font-weight: 500;
   font-size: 22px;
-  
 }
 
 .link-wrap {
@@ -65,7 +68,6 @@ h3 {
   font-weight: bold;
 }
 .onLink {
-  
   border-bottom: 3px solid var(--light-main);
   color: var(--light-main);
 }

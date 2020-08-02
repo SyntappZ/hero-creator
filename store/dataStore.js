@@ -5,8 +5,8 @@ const state = () => ({
     { title: "meta data", id: 0 },
     { title: "fonts", id: 1 },
     { title: "buttons", id: 2 },
-    { title: "navigation", id: 3 },
-    { title: "page wrapper", id: 4 },
+    { title: "page wrapper", id: 3 },
+    { title: "navigation", id: 4 },
     { title: "colors", id: 5 },
 
     { title: "background image", id: 6 },

@@ -1,5 +1,5 @@
 <template>
-  <div class="colors">
+  <div class="colors slidePosition">
     <div class="checkbox">
       <Checkbox label="dark mode" id="darkMode" />
     </div>
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     changePrimaryColor({ hex }) {
-      const payload = { name: "mainPrimaryColor", color: hex };
+      const payload = { name: "linkColor", color: hex };
       this.updateColor(payload);
     },
     changeSecondaryColor({ hex }) {

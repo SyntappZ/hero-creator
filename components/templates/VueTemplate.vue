@@ -1,6 +1,6 @@
 <template>
-  <div class="preview">
-      <h1>preview page</h1>
+  <div class="vueTemplate">
+
   </div>
 </template>
 
@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

@@ -1,27 +1,29 @@
 <template>
-  <div class="header container">
-    <div class="logo-wrap" @click="backToHome">
-      <img src="/images/landing-logo.png" class="logo" alt="logo" />
-      <div class="title-wrap">
-        <p class="nav-title">
-          portfolio
-          <span>creator</span>
-        </p>
-        <p class="subtitle">template generator</p>
+  <div class="header">
+    <div class="container">
+      <div class="logo-wrap" @click="backToHome">
+        <img src="/images/landing-logo.png" class="logo" alt="logo" />
+        <div class="title-wrap">
+          <p class="nav-title">
+            portfolio
+            <span>creator</span>
+          </p>
+          <p class="subtitle">template generator</p>
+        </div>
       </div>
-    </div>
 
-    <div class="login">
-      <div
-        class="type-link"
-        v-for="link in typeLinks"
-        :class="[codeType === link ? underline : '']"
-        :key="link"
-        @click="changeType(link)"
-      >{{link}}</div>
+      <div class="login">
+        <div
+          class="type-link"
+          v-for="link in typeLinks"
+          :class="[codeType === link ? underline : '']"
+          :key="link"
+          @click="changeType(link)"
+        >{{link}}</div>
 
-      <div class="splitter"></div>
-      <nuxt-link class="link" to="/login">Sign In</nuxt-link>
+        <div class="splitter"></div>
+        <nuxt-link class="link" to="/login">Sign In</nuxt-link>
+      </div>
     </div>
   </div>
 </template>
@@ -55,9 +57,13 @@ export default {
   background: white;
   font-weight: bold;
   letter-spacing: 1px;
-  display: flex;
-  justify-content: space-between;
+ 
   box-shadow: var(--box-shadow);
+}
+
+.container {
+ display: flex;
+  justify-content: space-between;
 }
 
 .logo-wrap {

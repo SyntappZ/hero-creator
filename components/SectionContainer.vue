@@ -52,7 +52,8 @@ export default {
 
 <style scoped>
 .section-container {
-  flex: 1 1 100px;
+ min-width: 600px;
+ width: 100%;
   background: white;
   min-height: 520px;
   border-radius: var(--border-radius);
@@ -61,8 +62,9 @@ export default {
 }
 
 .wrap {
- 
-  padding: 20px 50px;
+  position: relative;
+  padding: 20px 0;
+  margin: 0 50px;
   min-height: 420px;
 }
 

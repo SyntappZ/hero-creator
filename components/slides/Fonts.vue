@@ -1,5 +1,5 @@
 <template>
-  <div class="fonts">
+  <div class="fonts slidePosition">
       <h3 class="h3-title">choose font</h3>
       <Radios :radios="fonts" :isFonts="true" />
   </div>
@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
 .fonts {
- 
+ width: 100%;
 }
  
 </style>
