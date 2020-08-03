@@ -15,7 +15,7 @@ export default {
     },
     data() {
         return {
-            fonts: ['Nunito', 'Orbitron', 'Barlow', 'Indie Flower', 'Josefin Sans', 'Raleway', 'Roboto', 'Ubuntu']
+            fonts: ['Arial', 'Nunito', 'Orbitron', 'Barlow', 'Indie Flower', 'Josefin Sans', 'Raleway', 'Roboto', 'Ubuntu']
         }
     }
 }

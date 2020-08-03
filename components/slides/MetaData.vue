@@ -1,45 +1,45 @@
 <template>
   <div class="meta-data slidePosition">
-
-    <InputData placeholder="Document Title" id="documentTitle" />
+    <InputData placeholder="Document/Main Title" id="documentTitle" />
     <InputData placeholder="Description" id="description" />
     <InputData placeholder="Author" id="author" />
     <InputData placeholder="keywords seperate with commas" id="keywords" />
-    <Button title="add data" @handleSubmit="nextSlide" />
+
+    <Slider
+      :updateSliderState="updatePageWrapper"
+      title="Page Wrapper"
+      :h5value="`max-width: ${this.pageWrapper}`"
+    />
   </div>
 </template>
 
 <script>
-
 import InputData from "../InputData.vue";
-
-import Button from "../Button.vue";
+import Slider from "../Slider.vue";
+import { mapActions, mapState } from "vuex";
 export default {
   props: ["title"],
   components: {
     InputData,
-    
-    Button,
+    Slider,
   },
   data() {
     return {
-     
+      sliderValue: 0,
     };
   },
   methods: {
-    nextSlide() {
-
-    }
-  
+    ...mapActions("prismStore", ["updatePageWrapper"]),
   },
   computed: {
-    
+    ...mapState("prismStore", ["pageWrapper"]),
   },
 };
 </script>
 
 <style scoped>
 .meta-data {
- width: 100%;
+  width: 100%;
 }
+
 </style>

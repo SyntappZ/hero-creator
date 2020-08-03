@@ -1,13 +1,12 @@
 const state = () => ({
   currentSection: 0,
-  currentSlide: 0,
+  currentSlideNumber: 0,
   slides: [
     { title: "meta data", id: 0 },
     { title: "fonts", id: 1 },
-    { title: "buttons", id: 2 },
-    { title: "page wrapper", id: 3 },
+    { title: "colors", id: 2 },
+    { title: "buttons", id: 3 },
     { title: "navigation", id: 4 },
-    { title: "colors", id: 5 },
 
     { title: "background image", id: 6 },
     { title: "design", id: 7 },
@@ -36,8 +35,8 @@ const state = () => ({
     {
       id: 0,
       title: "setup",
-      slideAmount: 6,
-      slides: [0, 1, 2, 3, 4, 5]
+      slideAmount: 5,
+      slides: [0, 1, 2, 3, 4]
     },
     {
       id: 1,
@@ -76,34 +75,74 @@ const mutations = {
   updateSection(state, sectionId) {
     state.currentSection = sectionId;
   },
-  updateSlide(state, value) {
-    state.currentSlide = value;
 
-    if (value < 6) {
+  nextSlide(state) {
+    if (state.currentSlideNumber < 22) {
+      state.currentSlideNumber++;
+    }
+  },
+  previousSlide(state) {
+    if (state.currentSlideNumber > 0) {
+      state.currentSlideNumber--;
+    }
+  },
+  checkSlideNumber(state, slideNumber) {
+    if (slideNumber < 6) {
       state.currentSection = 0;
-    } else if (value < 10) {
+    } else if (slideNumber < 10) {
       state.currentSection = 1;
-    } else if (value < 13) {
+    } else if (slideNumber < 13) {
       state.currentSection = 2;
-    } else if (value < 16) {
+    } else if (slideNumber < 16) {
       state.currentSection = 3;
-    } else if (value < 19) {
+    } else if (slideNumber < 19) {
       state.currentSection = 4;
-    } else if (value >= 19) {
+    } else if (slideNumber >= 19) {
       state.currentSection = 5;
     }
-
-   
+  },
+  sectionJump(state, sectionId) {
+   switch(sectionId) {
+     case 0: state.currentSlideNumber = 0;
+     break;
+     case 1: state.currentSlideNumber = 6;
+     break;
+     case 2: state.currentSlideNumber = 10;
+     break;
+     case 3: state.currentSlideNumber = 13;
+     break;
+     case 4: state.currentSlideNumber = 16;
+     break;
+     case 5: state.currentSlideNumber = 19;
+     break;
+     default: state.currentSlideNumber = 0;
+   }
   }
+ 
 };
 
 const actions = {
   changeSection({ commit }, sectionId) {
     commit("updateSection", sectionId);
+    commit("sectionJump", sectionId)
   },
   changeSlide({ commit }, value) {
     commit("updateSlide", value);
+  },
+  pagination({ commit, state }, forward) {
+    if (forward) {
+      commit("nextSlide");
+    } else {
+      commit("previousSlide");
+    }
+    commit("checkSlideNumber", state.currentSlideNumber);
   }
 };
 
-export { state, actions, mutations };
+const getters = {
+  currentSlide(state) {
+    return state.slides[state.currentSlideNumber];
+  }
+};
+
+export { state, actions, mutations, getters };

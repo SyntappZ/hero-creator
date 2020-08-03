@@ -54,12 +54,19 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 
 .body {
   width: 100%;
   margin: 30px 0;
   font-family: var(--templateFont);
+}
+
+.p-container {
+  width: 100%;
+  max-width: var(--wrapperWidth);
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
 

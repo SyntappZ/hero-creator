@@ -2,7 +2,7 @@
   <div class="radios">
     <div class="radio-wrap">
       <div class="radio" v-for="name in radios" :key="name">
-        <input type="radio" :id="name" :value="name" v-model="picked" @change="changeFont" />
+        <input type="radio" :id="name" :value="name" v-model="picked" @change="changeFont"  />
        
         <label :for="name">{{ name }}</label>
       </div>
@@ -18,10 +18,13 @@
 import { mapState, mapActions } from 'vuex';
 export default {
   props: ["radios", "isFonts"],
-  mounted() {},
+  mounted() {
+    console.log(this.mainFont)
+    this.picked = this.mainFont
+  },
   data() {
     return {
-      picked: "Arial",
+       picked: "Arial",
      
     };
   },
@@ -36,6 +39,7 @@ export default {
     fontStyle() {
       return { fontFamily: this.picked };
     },
+    
   },
 };
 </script>

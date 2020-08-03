@@ -4,8 +4,8 @@
     <transition-group name="fade">
       <MetaData :title="slide.title" key="0" v-if="slide.id === 0" />
       <Fonts :title="slide.title" key="1" v-if="slide.id === 1" />
-     
-      <Colors :title="slide.title" key="5" v-if="slide.id === 5" />
+      <Colors :title="slide.title" key="2" v-if="slide.id === 2" />
+      <Buttons :title="slide.title" key="3" v-if="slide.id === 3" />
     </transition-group>
   </div>
 </template>
@@ -15,7 +15,7 @@ import MetaData from "./slides/MetaData.vue";
 import Colors from "./slides/Colors.vue";
 import Fonts from "./slides/Fonts.vue";
 
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 export default {
   
   props: ["sectionTitle"],
@@ -31,13 +31,14 @@ export default {
     
   },
   data() {
-    return {};
+    return {
+      
+    };
   },
   computed: {
-    ...mapState("dataStore", ["currentSection", "slides", "currentSlide"]),
-    slide() {
-      return this.slides[this.currentSlide];
-    },
+    ...mapState("dataStore", ["currentSection", "slides"]),
+    ...mapGetters("dataStore", {slide: "currentSlide"})
+   
   },
 };
 </script>

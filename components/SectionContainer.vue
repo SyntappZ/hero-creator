@@ -5,8 +5,8 @@
       <Slides />
     </div>
     <div class="footer">
-      <button @click="pagination(slide > 0 ? --slide : 0)">back</button>
-      <button @click="pagination(slide < 24 ? ++slide : 24)">next</button>
+      <button @click="pagination(false)">back</button>
+      <button @click="pagination(true)">next</button>
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import Slides from "./Slides.vue";
 import Title from "./Title.vue";
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   mounted() {},
   components: {
@@ -27,25 +27,22 @@ export default {
     };
   },
   computed: {
+    ...mapGetters("dataStore", ['currentSlide']),
     ...mapState("dataStore", [
       "sections",
       "slides",
       "currentSection",
-      "currentSlide",
+      
     ]),
     slideTitle() {
-      const title = this.sections[this.currentSection].title;
-      const slideTitle = this.slides[this.currentSlide].title;
-      const check = title === "setup" ? slideTitle : `${title} ${slideTitle}`;
-      return slideTitle;
+     
+      return this.currentSlide.title
     },
   },
 
   methods: {
-    ...mapActions("dataStore", ["changeSlide", "changeSection"]),
-    pagination(slide) {
-      this.changeSlide(slide);
-    },
+    ...mapActions("dataStore", ["pagination"]),
+    
   },
 };
 </script>

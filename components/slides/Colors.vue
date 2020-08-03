@@ -1,16 +1,16 @@
 <template>
   <div class="colors slidePosition">
     <div class="checkbox">
-      <Checkbox label="dark mode" id="darkMode" />
+      <Checkbox label="dark mode" stateId="darkMode" :checkboxState="darkMode" />
     </div>
     <div class="color-wrap">
       <div class="color-picker">
         <h4>Primary Color</h4>
-        <Chrome :value="colors" @input="changePrimaryColor"></Chrome>
+        <Chrome :value="mainPrimaryColor" @input="changePrimaryColor"></Chrome>
       </div>
       <div class="color-picker">
         <h4>Secondary Color</h4>
-        <Chrome :value="colors" @input="changeSecondaryColor"></Chrome>
+        <Chrome :value="mainSecondaryColor" @input="changeSecondaryColor"></Chrome>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      colors: "#5f1735",
+      
     };
   },
   methods: {
@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     ...mapState("dataStore", ["currentSection", "sections"]),
-    ...mapState("prismStore", ["darkMode"]),
+    ...mapState("prismStore", ["darkMode", "mainPrimaryColor", "mainSecondaryColor"]),
   },
 };
 </script>

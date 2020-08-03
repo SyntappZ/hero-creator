@@ -40,14 +40,20 @@ export default {
   --box-shadow: 10px 10px 25px -19px #2f2f2f8f;
   --linear-background: linear-gradient(0deg, var(--main), rgb(144, 24, 60));
 
-  /* template variables */
+  /* ===================== template variables ================= */
+  
   --linkColor: #333;
   --sectionBackground: white; 
+  --mainPrimaryColor: #5F1735;
+  --buttonRadius: 0;
+  --buttonUpperCase: capitalize;
   --textColor: #333;
   --headerBackground: white;
   --fontWeight: bold;
   --headerTextTransform: capitalize;
   --templateFont: Arial;
+  --headerJustify: space-between;
+  --wrapperWidth: 1900px;
 }
 body {
   font-family: "Nunito", sans-serif;

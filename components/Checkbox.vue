@@ -1,36 +1,45 @@
 <template>
   <div class="check-box">
-    <input type="checkbox" id="checkbox" :checked="darkMode" @change="handleCheckbox" />
+    <input type="checkbox" id="checkbox" :checked="checkboxState" @change="handleCheckbox" />
     <label for="checkbox">{{ label }}</label>
   </div>
 </template>
 
 <script>
-    import { mapState, mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
-    props: ['label', 'id'],
-    data() {
-        return {
-            
-        }
+  props: ["label", "stateId", "checkboxState"],
+  data() {
+    return {
+      
+    };
+  },
+  mounted() {
+    
+  },
+  methods: {
+    ...mapActions("prismStore", ["updateCheckbox"]),
+    handleCheckbox() {
+      this.updateCheckbox(this.stateId);
     },
-    mounted() {
-        console.log(this.darkMode)
-    },
-    methods: {
-         ...mapActions('prismStore', ['updateCheckbox']),
-         handleCheckbox() {
-             this.updateCheckbox(this.id)
-         }
-    },
-    computed: {
-        ...mapState('prismStore', ['darkMode']),
-    }
+  },
+
+  // watch: {
+  //     checked() {
+
+  //         this.updateCheckbox(this.stateId)
+  //     }
+  // }
+//   computed: {
+//       checked() {
+//           return this.checkboxState
+//       }
+//   }
 };
 </script>
 
 <style scoped>
-    .check-box {
-        padding: 10px 0;
-    }
+.check-box {
+  padding: 10px 0;
+}
 </style>
