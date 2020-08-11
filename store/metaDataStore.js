@@ -2,42 +2,29 @@ import formatter from "html-formatter";
 
 const state = () => ({
   body: "",
+  bodyBackground: '#fff',
   documentTitle: "",
   description: "",
   author: "",
   keywords: "",
   darkMode: false,
-  mainPrimaryColor: "#5F1735",
-  mainSecondaryColor: "#5F1735",
+  mainPrimaryColor: "",
+  mainSecondaryColor: "#fff",
   mainFont: "Arial",
   linkColor: "#333",
+  textColor: '#333',
   uppercase: false,
   headerCenter: false,
+  headerBackground: '#fff',
+  headerFontWeight: '500',
+  headerTextTransform: 'capitalize',
   pageWrapper: "1900px",
   buttonFill: false,
   buttonRadius: 0,
-  buttonUpperCase: false
+  buttonUpperCase: false,
+  sectionBackground: '#fff'
 });
 
-const setStyleProperty = (style, payload) => {
-
-  const root = document.documentElement;
-  root.style.setProperty(style, payload);
-};
-
-const darkMode = (darkmode, primaryColor) => {
-  if (darkmode) {
-    setStyleProperty("--sectionBackground", "#333");
-    setStyleProperty("--headerBackground", primaryColor || "#222");
-    setStyleProperty("--linkColor", "white");
-    setStyleProperty("--textColor", "white");
-  } else {
-    setStyleProperty("--headerBackground", "white");
-    setStyleProperty("--linkColor", "#333");
-    setStyleProperty("--sectionBackground", "white");
-    setStyleProperty("--textColor", "#333");
-  }
-};
 
 const checkboxProperties = (state, name) => {
 
@@ -48,29 +35,41 @@ const mutations = {
     state[id] = input;
   },
   toggleCheckbox(state, name) {
+
+  
     
     state[name] = !state[name];
 
-    if(name === "buttonUpperCase") {
-      setStyleProperty("--buttonUpperCase", state[name] ? "uppercase" : "capitalize")
+    
+
+    if (state.darkMode && name === 'darkMode') {
+      state.sectionBackground = "#333"
+      state.headerBackground = state.mainPrimaryColor || "#444"
+      state.linkColor = '#fff'
+      state.textColor = '#fff'
+     
+    } else {
+      state.sectionBackground = "#fff"
+      state.headerBackground = state.mainPrimaryColor || "#fff"
+      state.linkColor = '#333'
+      state.textColor = '#333'
     }
 
-    if (name === "darkMode") {
-      darkMode(state.darkMode, state.mainPrimaryColor);
-    }
+   
+
+    
   },
   setColor(state, { name, color }) {
     state[name] = color;
-    const styleName = `--${name}`;
-    if (state.darkMode) {
-      setStyleProperty("--headerBackground", state.mainPrimaryColor);
+    
+    if(name === 'mainPrimaryColor') {
+      state.headerBackground = state.mainPrimaryColor
     }
-
-    setStyleProperty(styleName, color);
+      
+    
   },
   setFont(state, font) {
     state.mainFont = font;
-    setStyleProperty("--templateFont", font);
   },
   setPreviewBody(state, payload) {
     state.body = payload;
@@ -78,12 +77,12 @@ const mutations = {
   setPageWrapper(state, payload) {
     const width = 1900 - payload * 7 + "px";
     state.pageWrapper = width;
-    setStyleProperty("--wrapperWidth", width);
+   
   },
   setButtonRadius(state, payload) {
-    const radius = Math.floor(payload / 4) + "px";
+    const radius = Math.floor(payload / 3) + "px";
     state.buttonRadius = radius;
-    setStyleProperty("--buttonRadius", radius);
+  
   }
 };
 

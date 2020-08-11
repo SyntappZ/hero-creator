@@ -1,5 +1,6 @@
 <template>
   <div class="btn" @click="handleSubmit">{{ title }}</div>
+  
 </template>
 
 <script>

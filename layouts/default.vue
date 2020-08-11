@@ -20,10 +20,10 @@ export default {
     
   },
   methods: {
-    // ...mapActions('prismStore', ['updateRoot'])
+    // ...mapActions('metaDataStore', ['updateRoot'])
   },
   computed: {
-    // ...mapState('prismStore', ['darkMode']),
+    // ...mapState('metaDataStore', ['darkMode']),
 
   },
   
@@ -51,9 +51,9 @@ export default {
   --headerBackground: white;
   --fontWeight: bold;
   --headerTextTransform: capitalize;
-  --templateFont: Arial;
-  --headerJustify: space-between;
-  --wrapperWidth: 1900px;
+  
+  
+  
 }
 body {
   font-family: "Nunito", sans-serif;
@@ -72,7 +72,7 @@ body {
   position: absolute;
 }
 
-.container {
+.page-container {
   width: 100%;
   max-width: 1460px;
   margin: 0 auto;

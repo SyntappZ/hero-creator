@@ -45,11 +45,11 @@ export default {
 
       this.updateColor(payload);
     },
-    ...mapActions("prismStore", ["updateColor"]),
+    ...mapActions("metaDataStore", ["updateColor"]),
   },
   computed: {
     ...mapState("dataStore", ["currentSection", "sections"]),
-    ...mapState("prismStore", ["darkMode", "mainPrimaryColor", "mainSecondaryColor"]),
+    ...mapState("metaDataStore", ["darkMode", "mainPrimaryColor", "mainSecondaryColor"]),
   },
 };
 </script>

@@ -29,10 +29,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions("prismStore", ["updatePageWrapper"]),
+    ...mapActions("metaDataStore", ["updatePageWrapper"]),
   },
   computed: {
-    ...mapState("prismStore", ["pageWrapper"]),
+    ...mapState("metaDataStore", ["pageWrapper"]),
   },
 };
 </script>

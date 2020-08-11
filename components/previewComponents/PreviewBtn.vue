@@ -1,49 +1,34 @@
 <template>
-  <div :class="buttonClass">button</div>
+  <div class="button" :style="buttonStyle">button</div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 export default {
+  mounted() {},
   computed: {
-    ...mapState("prismStore", ["buttonFill"]),
-    buttonClass() {
-      
-      return this.buttonFill ? "button-fill" : "button-border";
+    ...mapState("metaDataStore", ["buttonFill", "mainPrimaryColor", "buttonRadius", "buttonUpperCase"]),
+    
+    buttonStyle() {
+      return {
+        display: "inline-block",
+        textAlign: "center",
+        padding: "15px 50px",
+        letterSpacing: "2px",
+        color: this.buttonFill ? "white" : (this.mainPrimaryColor || '#333'),
+        border: this.buttonFill ? null : `solid 2px ${this.mainPrimaryColor || '#333'}`,
+        borderRadius: this.buttonRadius,
+        background: this.buttonFill ? (this.mainPrimaryColor || '#333') : 'transparent',
+        textTransform: this.buttonUpperCase ? "uppercase" : "capitalize",
+        cursor: "pointer",
+        margin: "10px auto",
+        fontWeight: "bold",
+      };
     },
   },
 };
 </script>
 
 <style scoped>
-.button-fill {
-  display: inline-block;
-  text-align: center;
-  padding: 20px 50px;
-  letter-spacing: 2px;
-  color: white;
-  border-radius: var(--buttonRadius);
-  background: var(--mainPrimaryColor);
-  text-transform: var(--buttonUpperCase);
-  cursor: pointer;
-  margin: 10px auto;
-  font-family: var(--templateFont);
-  font-weight: bold;
-}
-.button-border {
-  display: inline-block;
-  text-align: center;
 
-  padding: 20px 50px;
-  text-transform: capitalize;
-  letter-spacing: 2px;
-  color: var(--mainPrimaryColor);
-  border-radius: var(--buttonRadius);
-  border: solid 2px var(--mainPrimaryColor);
-  text-transform: var(--buttonUpperCase);
-  cursor: pointer;
-  margin: 10px auto;
-  font-family: var(--templateFont);
-  font-weight: bold;
-}
 </style>

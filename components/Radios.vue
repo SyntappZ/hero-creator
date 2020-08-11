@@ -32,10 +32,10 @@ export default {
       changeFont() {
           this.updateFont(this.picked);
       },
-      ...mapActions('prismStore', ['updateFont'])
+      ...mapActions('metaDataStore', ['updateFont'])
   },
   computed: {
-      ...mapState('prismStore', ['mainFont', 'author']),
+      ...mapState('metaDataStore', ['mainFont', 'author']),
     fontStyle() {
       return { fontFamily: this.picked };
     },

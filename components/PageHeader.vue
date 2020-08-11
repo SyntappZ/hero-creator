@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="container">
+    <div class="page-container">
       <div class="logo-wrap" @click="backToHome">
         <img src="/images/landing-logo.png" class="logo" alt="logo" />
         <div class="title-wrap">
@@ -61,7 +61,7 @@ export default {
   box-shadow: var(--box-shadow);
 }
 
-.container {
+.page-container {
  display: flex;
   justify-content: space-between;
 }

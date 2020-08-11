@@ -19,7 +19,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions("prismStore", ["updateInputData"]),
+    ...mapActions("metaDataStore", ["updateInputData"]),
   
   },
   watch: {

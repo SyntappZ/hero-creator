@@ -18,7 +18,7 @@ export default {
     
   },
   methods: {
-    ...mapActions("prismStore", ["updateCheckbox"]),
+    ...mapActions("metaDataStore", ["updateCheckbox"]),
     handleCheckbox() {
       this.updateCheckbox(this.stateId);
     },

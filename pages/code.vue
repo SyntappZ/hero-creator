@@ -1,5 +1,5 @@
 <template>
-  <div class="code-page container">
+  <div class="code-page page-container">
     <div class="code-wrap">
       <div class="code">
         <h2 class="code-title">{{codeType}}</h2>

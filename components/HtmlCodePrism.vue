@@ -24,7 +24,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters("prismStore", ["previewHtml"]),
+    ...mapGetters("metaDataStore", ["previewHtml"]),
   },
 };
 </script>

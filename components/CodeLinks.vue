@@ -1,6 +1,6 @@
 <template>
   <div class="code-links">
-    <div class="container">
+    <div class="page-container">
       <h3>{{codeType}} code</h3>
       <div class="link-wrap">
         <nuxt-link :class="[link, onCode ? linkUnderline : '']" to="/">Builder</nuxt-link>
@@ -39,7 +39,7 @@ export default {
   position: relative;
 }
 
-.container {
+.page-container {
   display: flex;
   justify-content: space-between;
   align-items: center;

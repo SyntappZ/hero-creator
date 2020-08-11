@@ -1,12 +1,12 @@
 <template>
   <div class="main ">
-    <div class="container">
+    <div class="page-container">
        <h2 class="title">{{section.title}}</h2>
     <p class="subtitle">{{section.slideAmount}} Slides</p>
     </div>
 
    
-    <div class="setup-wrap container">
+    <div class="setup-wrap page-container">
       <div class="selector-wrap">
         <SectionContainer />
       </div>

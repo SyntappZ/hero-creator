@@ -34,10 +34,10 @@ export default {
     Checkbox,
   },
   methods: {
-    ...mapActions("prismStore", ["updateButtonRadius"]),
+    ...mapActions("metaDataStore", ["updateButtonRadius"]),
   },
   computed: {
-    ...mapState("prismStore", ["buttonRadius", "buttonFill", "buttonUpperCase"]),
+    ...mapState("metaDataStore", ["buttonRadius", "buttonFill", "buttonUpperCase"]),
   },
 };
 </script>
