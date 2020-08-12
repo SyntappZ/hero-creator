@@ -2,7 +2,8 @@ import formatter from "html-formatter";
 
 const state = () => ({
   body: "",
-  bodyBackground: '#fff',
+  previewCss: "",
+  bodyBackground: "#fff",
   documentTitle: "",
   description: "",
   author: "",
@@ -12,77 +13,68 @@ const state = () => ({
   mainSecondaryColor: "#fff",
   mainFont: "Arial",
   linkColor: "#333",
-  textColor: '#333',
+  textColor: "#333",
   uppercase: false,
   headerCenter: false,
-  headerBackground: '#fff',
-  headerFontWeight: '500',
-  headerTextTransform: 'capitalize',
+  headerBackground: "#fff",
+  headerFontWeight: "500",
+  headerTextTransform: "capitalize",
   pageWrapper: "1900px",
   buttonFill: false,
   buttonRadius: 0,
   buttonUpperCase: false,
-  sectionBackground: '#fff'
+  sectionBackground: "#fff"
 });
 
-
-const checkboxProperties = (state, name) => {
-
-}
+const checkboxProperties = (state, name) => {};
 
 const mutations = {
   setMetaData(state, { id, input }) {
     state[id] = input;
   },
   toggleCheckbox(state, name) {
-
-  
-    
     state[name] = !state[name];
 
-    
-
-    if (state.darkMode && name === 'darkMode') {
-      state.sectionBackground = "#333"
-      state.headerBackground = state.mainPrimaryColor || "#444"
-      state.linkColor = '#fff'
-      state.textColor = '#fff'
-     
+    if (state.darkMode && name === "darkMode") {
+      state.sectionBackground = "#333";
+      state.headerBackground = state.mainPrimaryColor || "#444";
+      state.linkColor = "#fff";
+      state.textColor = "#fff";
     } else {
-      state.sectionBackground = "#fff"
-      state.headerBackground = state.mainPrimaryColor || "#fff"
-      state.linkColor = '#333'
-      state.textColor = '#333'
+      state.sectionBackground = "#fff";
+      state.headerBackground = state.mainPrimaryColor || "#fff";
+      state.linkColor = "#333";
+      state.textColor = "#333";
     }
-
-   
-
-    
   },
   setColor(state, { name, color }) {
     state[name] = color;
-    
-    if(name === 'mainPrimaryColor') {
-      state.headerBackground = state.mainPrimaryColor
+
+    if (name === "mainPrimaryColor") {
+      state.headerBackground = state.mainPrimaryColor;
     }
-      
-    
   },
   setFont(state, font) {
     state.mainFont = font;
   },
-  setPreviewBody(state, payload) {
-    state.body = payload;
+  setPreviewBody(state, html) {
+    state.body = html;
+  },
+  setPreviewCss(state, css) {
+    let styles = "* { box-sizing: border-box; margin: 0; padding: 0;} "
+    css.forEach(item => {
+      styles += item + " ";
+    });
+    
+    state.previewCss = styles;
   },
   setPageWrapper(state, payload) {
     const width = 1900 - payload * 7 + "px";
     state.pageWrapper = width;
-   
   },
   setButtonRadius(state, payload) {
     const radius = Math.floor(payload / 3) + "px";
     state.buttonRadius = radius;
-  
   }
 };
 
@@ -99,23 +91,26 @@ const actions = {
   updateFont({ commit }, font) {
     commit("setFont", font);
   },
-  updateHtmlBody({ commit }, payload) {
-    commit("setPreviewBody", payload);
+  updateHtmlBody({ commit }, [css, html]) {
+    commit("setPreviewCss", css);
+    commit("setPreviewBody", html);
   },
   updatePageWrapper({ commit }, payload) {
     commit("setPageWrapper", payload);
   },
   updateButtonRadius({ commit }, payload) {
-    commit("setButtonRadius", payload)
+    commit("setButtonRadius", payload);
   }
 };
 
 const getters = {
   previewHtml(state) {
-    const html = formatter.render(
-      `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="keywords" content="${state.keywords}"><meta name="author" content="${state.author}"><meta name="description" content="${state.description}"><title>${state.documentTitle}</title></head><body>${state.body}</body></html>`
-    );
+    const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="keywords" content="${state.keywords}"><meta name="author" content="${state.author}"><meta name="description" content="${state.description}"><title>${state.documentTitle}</title></head><body>${state.body}</body></html>`;
+
     return html;
+  },
+  previewCss(state) {
+    return state.previewCss
   }
 };
 

@@ -1,6 +1,6 @@
 <template>
   <div class="html-code">
-    <prism language="html" class="code">{{previewHtml}}</prism>
+    <prism language="html" class="code">{{html}}</prism>
   </div>
 </template>
 
@@ -9,6 +9,7 @@ import "prismjs/prism";
 import "prismjs/themes/prism-okaidia.css";
 import Prism from "vue-prism-component";
 import { mapState, mapGetters } from "vuex";
+import formatter from "html-formatter";
 export default {
   name: "html-code",
   components: {
@@ -25,6 +26,9 @@ export default {
 
   computed: {
     ...mapGetters("metaDataStore", ["previewHtml"]),
+    html() {
+      return formatter.render(this.previewHtml)
+    }
   },
 };
 </script>

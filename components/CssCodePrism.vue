@@ -1,6 +1,6 @@
 <template>
   <div class="css-code">
-    <prism class="code" language="css">{{ cssCode }}</prism>
+    <prism class="code" language="css">{{ css }}</prism>
   </div>
 </template>
 
@@ -8,38 +8,28 @@
 import "prismjs/prism";
 import "prismjs/themes/prism-okaidia.css";
 import Prism from "vue-prism-component";
-
+import { mapGetters } from 'vuex'
+import cssbeautify from 'cssbeautify'
 export default {
   name: "css-code",
   components: {
     Prism,
   },
   props: [],
-  mounted() {},
+  mounted() {
+    
+  },
   data() {
     return {
       
     };
   },
   computed: {
-    cssCode() {
-      return `body {
-  margin: 0;
-  font-size: 16px;
-}
-      
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-
-
-`
-
-;
-    },
+      ...mapGetters("metaDataStore", ["previewCss"]),
+      css() {
+        return cssbeautify(this.previewCss)
+      }
+    
   },
 };
 </script>
